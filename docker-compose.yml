@@ -2,11 +2,11 @@
 version: "3"
 services:
   app:
-    env_file: .env
     build: .
     depends_on:
       - postgres
     environment:
+      DATABASE_URL: postgres://user:pass@postgres:5432/db
       NODE_ENV: development
       PORT: 3000
     ports:
@@ -17,7 +17,8 @@ services:
       - /app/node_modules
 
   postgres:
-    env_file: .env
     image: postgres:alpine
+    environment:
+      POSTGRES_PASSWORD: pass
     ports:
       - "35432:5432"
