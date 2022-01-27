@@ -1,13 +1,16 @@
 const express = require("express");
-
+const port = process.env.PORT;
 const app = express();
+
+app.set('view engine', 'pug')
+
 app.get("/", (req, res) => {
-    res.send("Hello World!\n")
+    res.render('index', { 
+        title: 'Hello world', 
+        message: 'Hello world!'
+    })
 })
 
-let server;
-
-const port = process.env.PORT;
-server = app.listen(port, () => {
-    console.log(`App started on port ${port}`);
+let server = app.listen(port, () => {
+    console.log(`App started on port ${port}`)
 });
