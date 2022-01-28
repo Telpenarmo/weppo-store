@@ -8,12 +8,15 @@ nav.navbar.is-info
       span
   div#navbarMenu.navbar-menu
     div.navbar-start
-      a.navbar-item Home
-      div.navbar-item.has-dropdown.is-hoverable
-        a.navbar-link Products
-        div.navbar-dropdown
-          a.navbar-item Browse
-          a.navbar-item Categories
+      each tab in navbar.tabs
+        if !tab.hasDropdown
+          a.navbar-item(href=`${tab.href}`)= tab.label
+        else
+          div.navbar-item.has-dropdown.is-hoverable
+            a.navbar-link= tab.label
+            div.navbar-dropdown
+              each dtab in tab.tabs
+                a.navbar-item(href=`${dtab.href}`)= dtab.label
     div.navbar-end
       div.navbar-item
         div.buttons
