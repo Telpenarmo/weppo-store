@@ -3,10 +3,10 @@
     "private": "true",
     "version": "1.0.0",
     "description": "Online shop (student project)",
-    "main": "app.js",
+    "main": "./src/app.mjs",
     "scripts": {
-        "start": "node ./src/app.js",
-        "dev": "nodemon -L ./src/app.js & npm run scss",
+        "start": "node .",
+        "dev": "nodemon -L . & npm run scss",
         "scss": "sass --watch src/styles/main.scss src/public/styles/main.css"
     },
     "devDependencies": {
