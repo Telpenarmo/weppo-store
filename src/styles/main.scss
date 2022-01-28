@@ -1,9 +1,7 @@
 // Figure out how to do this in less crude way
 @import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/helpers/_all.sass";
 @import "../../node_modules/bulma/sass/elements/button.sass";
-
-$red_color: blue;
-
-h1 {
-  color: $red_color;
-}
+@import "../../node_modules/bulma/sass/layout/footer.sass";
+@import "../../node_modules/bulma/sass/components/navbar.sass"
