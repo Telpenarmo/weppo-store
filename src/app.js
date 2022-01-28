@@ -1,9 +1,9 @@
-const express = require("express");
-const port = process.env.PORT;
-const app = express();
+const express = require('express')
+const port = process.env.PORT
+const app = express()
 
 app.set('view engine', 'pug')
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/views')
 
 app.get("/", (req, res) => {
     res.render('index', { 
@@ -12,6 +12,8 @@ app.get("/", (req, res) => {
     })
 })
 
-let server = app.listen(port, () => {
+app.use('/assets', express.static(__dirname + '/public'))
+
+app.listen(port, () => {
     console.log(`App started on port ${port}`)
 });

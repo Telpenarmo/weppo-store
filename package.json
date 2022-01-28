@@ -6,7 +6,8 @@
     "main": "app.js",
     "scripts": {
         "start": "node ./src/app.js",
-        "dev": "nodemon -L ./src/app.js"
+        "dev": "nodemon -L ./src/app.js & npm run scss",
+        "scss": "sass --watch src/styles/main.scss src/public/styles/main.css"
     },
     "devDependencies": {
         "nodemon": "^2.0.12"
@@ -15,6 +16,7 @@
     "license": "MIT",
     "dependencies": {
         "express": "^4.17.2",
-        "pug": "^3.0.2"
+        "pug": "^3.0.2",
+        "sass": "^1.49.0"
     }
 }
