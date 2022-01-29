@@ -1,15 +1,19 @@
 /* Bulma imports */
-@import "../../node_modules/bulma/sass/utilities/_all";
-@import "../../node_modules/bulma/sass/base/_all";
-@import "../../node_modules/bulma/sass/helpers/_all";
-@import "../../node_modules/bulma/sass/elements/button";
-@import "../../node_modules/bulma/sass/elements/container";
-@import "../../node_modules/bulma/sass/elements/title";
-@import "../../node_modules/bulma/sass/layout/footer";
-@import "../../node_modules/bulma/sass/components/navbar";
+// @import "../../node_modules/bulma/sass/utilities/_all";
+// @import "../../node_modules/bulma/sass/base/_all";
+// @import "../../node_modules/bulma/sass/helpers/_all";
+// @import "../../node_modules/bulma/sass/elements/button";
+// @import "../../node_modules/bulma/sass/elements/container";
+// @import "../../node_modules/bulma/sass/elements/title";
+// @import "../../node_modules/bulma/sass/layout/footer";
+// @import "../../node_modules/bulma/sass/components/navbar";
+@import "../../node_modules/bulma/bulma.sass";
 
-$main_theme_color: darkslateblue;
+/* Variables */
+@import "variables";
 
 /* Custom styles */
-@import "user";
-@import "navbar";
+@import "utils/navbar";
+@import "utils/form";
+@import "utils/footer.scss";
+@import "views/user";

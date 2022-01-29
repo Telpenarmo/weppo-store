@@ -1,0 +1,24 @@
+.form-card {
+  @include desktop {
+    max-width: 35rem !important;
+    border-radius: 2rem;
+    box-shadow: 3px 3px 3px $grey;
+  }
+  background-color: $light;
+  padding: 2rem;
+
+  .field-group {
+    margin-bottom: 0.75rem;
+  }
+
+  .header {
+    padding-bottom: 1rem;
+  }
+
+  .columns {
+    margin-bottom: unset;
+  }
+  .column {
+    margin-bottom: unset;
+  }
+}

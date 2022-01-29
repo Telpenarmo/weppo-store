@@ -4,5 +4,9 @@ export default {
   },
   user: {
     show: '/user/:userId'
+  },
+  auth: {
+    login: '/login',
+    signup: '/signup'
   }
 }

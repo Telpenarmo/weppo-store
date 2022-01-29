@@ -20,6 +20,7 @@ nav.navbar.is-light.is-fixed-top
     div.navbar-end
       div.navbar-item
         div.buttons
-          a.button.is-light
+          a.button.is-light(href= `${routes.auth.signup}`)
             strong Sign up
-          a.button.is-light Log in
+          a.button.is-light(href= `${routes.auth.login}`) 
+            | Log in

@@ -1,0 +1,18 @@
+extends ../layout/layout.pug
+
+block content
+  section.signup
+    div.container.form-card.mt-6.mb-6
+      div.header
+        h1.title Log in
+        h2.subtitle Fill required fields to continue
+      form
+        div.field
+          div.control
+            input.input(type="text" placeholder="Username")
+        div.field
+          div.control
+            input.input(type="password" placeholder="Password")
+        div.field.is-grouped.is-grouped-centered
+          div.control
+            button.button.is-primary Log in

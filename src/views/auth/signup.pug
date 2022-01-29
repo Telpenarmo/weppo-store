@@ -1,0 +1,39 @@
+extends ../layout/layout.pug
+
+block content
+  section.signup
+    div.container.form-card.mt-6.mb-6
+      div.header
+        h1.title Sign up
+        h2.subtitle Fill required fields to continue
+      form
+        div.field-group
+          label.label General info
+          div.field
+            div.control
+              input.input(type="text" placeholder="Username")
+          div.columns
+            div.column.is-half.field
+              div.control
+                input.input(type="text" placeholder="Name")
+            div.column.is-half.field
+              div.control
+                input.input(type="text" placeholder="Surname")
+          div.field
+            div.control
+              input.input(type="text" placeholder="Email")
+          div.field
+            div.control
+              input.input(type="text" placeholder="Phone number")
+          
+        div.field
+          label.label Password
+          div.control
+            input.input(type="password" placeholder="Password")
+        div.field
+          label.label Date of birth
+          div.control
+            input.input(type="date" placeholder="Username")
+        div.field.is-grouped.is-grouped-right
+          div.control
+            button.button.is-primary Submit

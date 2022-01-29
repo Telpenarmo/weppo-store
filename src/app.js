@@ -4,6 +4,7 @@ import { dirname } from "path"
 import { fileURLToPath } from "url"
 import routeService from "./services/route-service.js"
 /* Controllers */
+import AuthController from "./controllers/auth-controller.js"
 import HomeController from "./controllers/home-controller.js"
 import UserController from "./controllers/user-controller.js"
 
@@ -19,6 +20,7 @@ app.locals.site = { title: 'WEPPO-STORE' }
 app.locals.routes = routeService
 app.locals.navbar = { tabs: [] }
 
+new AuthController(app)
 new HomeController(app)
 new UserController(app)
 
