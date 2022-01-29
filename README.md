@@ -1,5 +1,20 @@
 # weppo-store
 
+## Functional requirments
+
+* Anonymous user:
+  * browse products
+  * search products by name or description
+* Logged in user:
+  * sign up
+  * log in
+  * add products to the cart
+  * summary of products inside the cart
+* Admin:
+  * add/edit/delete products
+  * browse user list
+  * browse list of placed orders
+
 ## Build and run project
 
 ```
