@@ -1,6 +1,6 @@
-nav.navbar.is-info
+nav.navbar.is-info.is-fixed-top
   div.navbar-brand.store-logo
-    a.navbar-item 
+    a.navbar-item(href="/")
       strong= site.title
     a.navbar-burger(data-target="navbarMenu")
       span
@@ -20,6 +20,6 @@ nav.navbar.is-info
     div.navbar-end
       div.navbar-item
         div.buttons
-          a.button.is-primary
+          a.button.is-light
             strong Sign up
-          a.button.is-light Log in
+          a.button.is-info Log in

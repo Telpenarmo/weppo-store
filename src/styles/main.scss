@@ -1,7 +1,12 @@
-// Figure out how to do this in less crude way
-@import "../../node_modules/bulma/sass/utilities/_all.sass";
-@import "../../node_modules/bulma/sass/base/_all.sass";
-@import "../../node_modules/bulma/sass/helpers/_all.sass";
-@import "../../node_modules/bulma/sass/elements/button.sass";
-@import "../../node_modules/bulma/sass/layout/footer.sass";
-@import "../../node_modules/bulma/sass/components/navbar.sass"
+/* Bulma imports */
+@import "../../node_modules/bulma/sass/utilities/_all";
+@import "../../node_modules/bulma/sass/base/_all";
+@import "../../node_modules/bulma/sass/helpers/_all";
+@import "../../node_modules/bulma/sass/elements/button";
+@import "../../node_modules/bulma/sass/elements/container";
+@import "../../node_modules/bulma/sass/elements/title";
+@import "../../node_modules/bulma/sass/layout/footer";
+@import "../../node_modules/bulma/sass/components/navbar";
+
+/* Custom styles */
+@import "user"

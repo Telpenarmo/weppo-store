@@ -1,0 +1,21 @@
+extends ../layout/layout.pug
+
+block content
+  section.user-show
+    div.container.is-max-desktop.has-background-light.mt-6.mb-6
+      h1.title= user.username
+      div.data-field
+        h2.has-text-weight-bold.is-size-4 Name
+        span.is-size-5= `${user.name} ${user.surname}`
+      div.data-field
+        h2.has-text-weight-bold.is-size-4 Phone number
+        span.is-size-5= user.phoneNumber
+      div.data-field
+        h2.has-text-weight-bold.is-size-4 Date of birth
+        span.is-size-5= user.dateOfBirth
+      div.data-field
+        h2.has-text-weight-bold.is-size-4 Address
+        - let address = user.address
+        - addrstr  = `${address.zipCode} ${address.town} ${address.street} `
+        - addrstr += `${address.streetNumber}/${address.apartmentNumber}`
+        span.is-size-5= addrstr
