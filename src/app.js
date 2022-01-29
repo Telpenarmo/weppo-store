@@ -2,6 +2,7 @@
 import express from "express"
 import { dirname } from "path"
 import { fileURLToPath } from "url"
+import routeService from "./services/route-service.js"
 /* Controllers */
 import HomeController from "./controllers/home-controller.js"
 import UserController from "./controllers/user-controller.js"
@@ -15,6 +16,7 @@ app.set('views', workdir + '/views')
 app.use('/assets', express.static(workdir + '/public'))
 
 app.locals.site = { title: 'WEPPO-STORE' }
+app.locals.routes = routeService
 app.locals.navbar = { tabs: [] }
 
 new HomeController(app)

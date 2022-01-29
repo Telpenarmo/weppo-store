@@ -1,6 +1,6 @@
-nav.navbar.is-info.is-fixed-top
-  div.navbar-brand.store-logo
-    a.navbar-item(href="/")
+nav.navbar.is-light.is-fixed-top
+  div.navbar-brand
+    a.store-logo.navbar-item(href=`${routes.home.index}`)
       strong= site.title
     a.navbar-burger(data-target="navbarMenu")
       span
@@ -22,4 +22,4 @@ nav.navbar.is-info.is-fixed-top
         div.buttons
           a.button.is-light
             strong Sign up
-          a.button.is-info Log in
+          a.button.is-light Log in
