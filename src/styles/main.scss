@@ -1,13 +1,14 @@
 /* Bulma imports */
-// @import "../../node_modules/bulma/sass/utilities/_all";
-// @import "../../node_modules/bulma/sass/base/_all";
-// @import "../../node_modules/bulma/sass/helpers/_all";
-// @import "../../node_modules/bulma/sass/elements/button";
-// @import "../../node_modules/bulma/sass/elements/container";
-// @import "../../node_modules/bulma/sass/elements/title";
-// @import "../../node_modules/bulma/sass/layout/footer";
-// @import "../../node_modules/bulma/sass/components/navbar";
-@import "../../node_modules/bulma/bulma.sass";
+@import "../../node_modules/bulma/sass/utilities/_all";
+@import "../../node_modules/bulma/sass/base/_all";
+@import "../../node_modules/bulma/sass/helpers/_all";
+@import "../../node_modules/bulma/sass/components/navbar";
+@import "../../node_modules/bulma/sass/layout/footer";
+@import "../../node_modules/bulma/sass/elements/button";
+@import "../../node_modules/bulma/sass/elements/container";
+@import "../../node_modules/bulma/sass/elements/title";
+@import "../../node_modules/bulma/sass/grid/columns.sass";
+@import "../../node_modules/bulma/sass/form/_all.sass";
 
 /* Variables */
 @import "variables";
@@ -17,3 +18,4 @@
 @import "utils/form";
 @import "utils/footer.scss";
 @import "views/user";
+@import "views/home";

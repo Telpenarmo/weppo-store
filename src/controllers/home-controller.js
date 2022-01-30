@@ -1,4 +1,5 @@
 import routeService from "../services/route-service.js"
+import dummyProducts from "./.dummy-products.js"
 
 export default class {
   constructor(app) {
@@ -14,8 +15,8 @@ export default class {
   }
 
   index(req, res) {
-    res.render('index', {
-      message: 'Hello world'
+    res.render('home/index', {
+      products: dummyProducts
     })
   }
 }

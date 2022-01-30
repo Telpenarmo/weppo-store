@@ -2,7 +2,7 @@
   @include desktop {
     max-width: 35rem !important;
     border-radius: 2rem;
-    box-shadow: 3px 3px 3px $grey;
+    box-shadow: $main_shadow_type;
   }
   background-color: $light;
   padding: 2rem;

@@ -1,0 +1,11 @@
+mixin product-card(product)
+  .product-card
+    .product-card-header
+      .name
+        h2.is-size-4.has-text-weight-bold= product.name
+      .price
+        h2.is-size-4.has-text-weight-bold= `${product.price}$`
+    .content
+      p= product.summary
+        a.read-more  read more
+    a.button.cart-button Add to cart

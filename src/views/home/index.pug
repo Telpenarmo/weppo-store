@@ -1,0 +1,21 @@
+extends ../layout/layout.pug
+include ./parts/product-card.pug
+
+block content
+  section.latest
+    .container
+      h1.title.mb-5 Our latest products
+      - const productsPerRow = 3
+      - let numberOfProducts = products.length
+      - let numberOfRows = Math.ceil(numberOfProducts / productsPerRow)
+      - for (let i = 0; i < numberOfRows; i++)
+        .columns
+          - productsInRow = productsPerRow
+          - let lastRow = i == numberOfRows - 1
+          - let leftOver = numberOfProducts % productsPerRow
+          - if ( lastRow && leftOver ) {
+          -   productsInRow = leftOver 
+          - }
+          - for (let j = 0; j < productsInRow; j++)
+            .column.is-4
+              +product-card(products[i * productsPerRow + j])
