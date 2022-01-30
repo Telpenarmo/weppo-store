@@ -1,3 +1,5 @@
+/* Bulma overwrites */
+@import "bulma-overrides";
 /* Bulma imports */
 @import "../../node_modules/bulma/sass/utilities/_all";
 @import "../../node_modules/bulma/sass/base/_all";
@@ -19,3 +21,9 @@
 @import "utils/footer.scss";
 @import "views/user";
 @import "views/home";
+
+#content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - $footer-height - $navbar-height);
+}

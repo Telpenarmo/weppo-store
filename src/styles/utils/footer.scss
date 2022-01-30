@@ -1,3 +1,4 @@
 .footer {
-  border-top: 2px solid $main_theme_color
+  border-top: $footer-border-height solid $main_theme_color;
+  line-height: $footer-line-height;
 }
