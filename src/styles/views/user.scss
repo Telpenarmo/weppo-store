@@ -2,6 +2,7 @@ section.user-show {
   .container {
     @include desktop {
       border-radius: 2rem;
+      box-shadow: $main-shadow-type;
     }
     padding: 3.5rem;
 
