@@ -1,5 +1,5 @@
 extends ../layout/layout.pug
-include ./parts/product-card.pug
+include ../common/product-card.pug
 
 block content
   section.latest
@@ -11,11 +11,14 @@ block content
       - for (let i = 0; i < numberOfRows; i++)
         .columns
           - productsInRow = productsPerRow
-          - let lastRow = i == numberOfRows - 1
-          - let leftOver = numberOfProducts % productsPerRow
-          - if ( lastRow && leftOver ) {
-          -   productsInRow = leftOver 
+          - let isLastRow = i == numberOfRows - 1
+          - let leftover = numberOfProducts % productsPerRow
+          - if ( isLastRow && leftover ) {
+          -   productsInRow = leftover 
           - }
           - for (let j = 0; j < productsInRow; j++)
             .column.is-4
               +product-card(products[i * productsPerRow + j])
+      div.show-more
+        a.button.is-link.is-inverted.is-large(href=`${routes.product.index}`)
+          strong Show more

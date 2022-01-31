@@ -7,6 +7,7 @@ import routeService from "./services/route-service.js"
 import AuthController from "./controllers/auth-controller.js"
 import HomeController from "./controllers/home-controller.js"
 import UserController from "./controllers/user-controller.js"
+import ProductController from "./controllers/product-controller.js"
 
 const port = process.env.PORT
 const app = express()
@@ -23,16 +24,7 @@ app.locals.navbar = { tabs: [] }
 new AuthController(app)
 new HomeController(app)
 new UserController(app)
-
-/* Added temporarily to test dropdown tabs */
-app.locals.navbar.tabs.push({
-  label: 'Products',
-  hasDropdown: true,
-  tabs: [
-    {label: 'Browse', href: '/#'},
-    {label: 'Categories', href: '/#'}
-  ]
-})
+new ProductController(app)
 
 app.listen(port, () => {
   console.log(`App started on port ${port}`)

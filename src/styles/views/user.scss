@@ -1,3 +1,5 @@
+@import "../utils/wrapper-padding";
+
 section.user-show {
   .container {
     @include desktop {
@@ -14,11 +16,6 @@ section.user-show {
 
 section.user-index {
   #table-wrapper {
-    @include until($tablet) {
-      padding: 1rem;
-    }
-    @include from($tablet) {
-      padding: 3rem;
-    }
+    @include wrapper-padding;
   }
 }

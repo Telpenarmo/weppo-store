@@ -1,0 +1,22 @@
+@import "../utils/wrapper-padding";
+
+section.products-listing {
+  #product-list-wrapper {
+    @include wrapper-padding;
+  }
+
+  #search-button {
+    width: 100%;
+  }
+
+  .product-list {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    
+    .product-card {
+      &:not(:last-child) {
+        border-bottom: 1px solid $grey-lighter;
+      }
+    }
+  }
+}

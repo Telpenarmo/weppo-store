@@ -1,45 +1,23 @@
+@import "../utils/wrapper-padding";
+
 section.latest {
   .container {
-    @include until($tablet) {
-      padding: 1rem;
-    }
-    @include from($tablet) {
-      padding: 3rem;
-    }
+    @include wrapper-padding;
   }
-}
 
-.product-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background-color: $light;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  box-shadow: $main-shadow-type;
-
-  .product-card-header {
+  .show-more {
     display: flex;
-    margin-bottom: 1rem;
 
-    .name {
+    a.button {
+      width: fit-content;
+      margin-left: auto;
       margin-right: auto;
     }
-
-    .price {
-      color: $success;
-    }
   }
 
-  .content {
-    margin-bottom: 1rem;
-    .read-more {
-      white-space: nowrap;
-    }
-  }
-
-  .cart-button {
-    margin-top: auto;
-    width: fit-content;
+  .product-card {
+    height: 100%;
+    border-radius: 0.75rem;
+    box-shadow: $main-shadow-type;
   }
 }

@@ -5,14 +5,14 @@
 @import "../../node_modules/bulma/sass/base/_all";
 @import "../../node_modules/bulma/sass/helpers/_all";
 @import "../../node_modules/bulma/sass/components/navbar";
-@import "../../node_modules/bulma/sass/components/pagination.sass";
+@import "../../node_modules/bulma/sass/components/pagination";
 @import "../../node_modules/bulma/sass/layout/footer";
 @import "../../node_modules/bulma/sass/elements/button";
 @import "../../node_modules/bulma/sass/elements/container";
 @import "../../node_modules/bulma/sass/elements/title";
-@import "../../node_modules/bulma/sass/elements/table.sass";
-@import "../../node_modules/bulma/sass/grid/columns.sass";
-@import "../../node_modules/bulma/sass/form/_all.sass";
+@import "../../node_modules/bulma/sass/elements/table";
+@import "../../node_modules/bulma/sass/grid/columns";
+@import "../../node_modules/bulma/sass/form/_all";
 
 /* Variables */
 @import "variables";
@@ -20,9 +20,11 @@
 /* Custom styles */
 @import "utils/navbar";
 @import "utils/form";
-@import "utils/footer.scss";
+@import "utils/footer";
+@import "utils/product-card";
 @import "views/user";
 @import "views/home";
+@import "views/product";
 
 #content-wrapper {
   display: flex;

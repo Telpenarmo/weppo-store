@@ -1,0 +1,31 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background-color: $light;
+  padding: 1rem;
+
+  .product-card-header {
+    display: flex;
+    margin-bottom: 1rem;
+
+    .name {
+      margin-right: auto;
+    }
+
+    .price {
+      color: $success;
+    }
+  }
+
+  .content {
+    margin-bottom: 1rem;
+    .read-more {
+      white-space: nowrap;
+    }
+  }
+
+  .cart-button {
+    margin-top: auto;
+    width: fit-content;
+  }
+}

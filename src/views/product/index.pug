@@ -1,0 +1,18 @@
+extends ../layout/layout.pug
+include ../common/product-card.pug
+include ../common/pagination.pug
+
+block content
+  section.products-listing
+    #product-list-wrapper.container.is-max-desktop
+      h1.title.mb-5 List of available products
+      form
+        .columns
+          .column.is-10
+            input.input(placeholder="Search")
+          .column
+            button#search-button.button Search
+      .product-list
+        each product in products
+          +product-card(product)
+      +pagination(pagination)

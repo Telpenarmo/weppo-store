@@ -15,6 +15,9 @@ export default {
     index: '/users',
     show: '/user/:userId'
   },
+  product: {
+    index: '/products'
+  },
   auth: {
     login: '/login',
     signup: '/signup'
