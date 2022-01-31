@@ -1,4 +1,5 @@
 export default [ {
+    id: 0,
     username: 'MusicFreak456',
     name: 'Cezary',
     surname: 'Świtała',
@@ -6,6 +7,7 @@ export default [ {
     phoneNumber: '123 456 789',
     dateOfBirth: '01-01-1970'
   }, {
+    id: 1,
     username: 'Telpenarmo',
     name: 'Jakub',
     surname: 'Grabarczuk',

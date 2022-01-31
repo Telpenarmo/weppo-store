@@ -1,0 +1,26 @@
+extends ../layout/layout.pug
+include ../common/pagination.pug
+
+block content
+  section.user-index
+    #table-wrapper.container.is-max-desktop
+      h1.title.mb-5 User list
+      .table-container
+        table.is-fullwidth.table.is-striped
+          thead
+            tr
+              th Username
+              th Name
+              th Surname
+              th Email
+          tbody
+            each user in users
+              tr
+                th
+                  a(href
+                  =`${routes.substituteParameters(routes.user.show, user.id)}`)
+                    = user.username
+                th= user.name
+                th= user.surname
+                th= user.email
+      +pagination(pagination)

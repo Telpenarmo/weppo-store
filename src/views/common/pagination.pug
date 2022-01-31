@@ -1,0 +1,9 @@
+mixin pagination(pag)
+  nav.pagination
+    ul.pagination-list
+      -for(let i=1; i<=pag.numberOfPages; i++)
+        li
+          if pag.currentPage == i
+            a.pagination-link.is-current(href=`?page=${i}`)= i
+          else
+            a.pagination-link(href=`?page=${i}`)= i
