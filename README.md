@@ -34,7 +34,8 @@ In development mode, our database is configured to trust anyone who tries to est
 host: localhost
 port: 35432
 database: db
-username: postgres
+username: user
+password: pass
 ```
 
 ### Adding new npm package
@@ -42,6 +43,5 @@ username: postgres
 ```
 $ docker-compose down
 $ npm install --save <package-name>
-$ docker-compose build
-$ docker-compose up
+$ docker-compose up --build
 ```
