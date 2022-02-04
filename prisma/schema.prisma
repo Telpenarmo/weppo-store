@@ -16,12 +16,13 @@ model User {
   name        String
   surname     String
   email       String
-  phoneNumber Int?
+  phoneNumber String?
   dateOfBirth DateTime?
 }
 
 model Product {
   id      Int    @id @default(autoincrement())
+  name    String
   summary String
   price   Float
 }
