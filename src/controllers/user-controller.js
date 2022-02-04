@@ -1,5 +1,5 @@
 import routeService from "../services/route-service.js";
-import dummyUsers from "./.dummy-users.js";
+import prisma from "../services/prisma-service.js"
 
 export default class {
   constructor(app) {
@@ -14,9 +14,9 @@ export default class {
     res.render('user/show', {user: dummyUsers[userId]})
   }
 
-  index(req, res) {
+  async index(req, res) {
     res.render('user/index', {
-      users: dummyUsers,
+      users: await prisma.user.findMany(),
       pagination: {
         numberOfPages: 3,
         currentPage: 1
