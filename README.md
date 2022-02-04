@@ -18,6 +18,9 @@
 ## Build and run project
 
 ```
+$ docker-compose build
+$ docker-compose run app npm run migrate:dev
+$ docker-compose run app npm run seed # optional
 $ docker-compose up
 ```
 
