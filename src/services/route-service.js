@@ -16,7 +16,8 @@ export default {
     show: '/user/:userId'
   },
   product: {
-    index: '/products'
+    index: '/products',
+    search: '/products/search'
   },
   auth: {
     login: '/login',

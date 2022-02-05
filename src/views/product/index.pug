@@ -9,9 +9,9 @@ block content
       form
         .columns
           .column.is-10
-            input.input(placeholder="Search")
+            input.input(type="search" name="q" placeholder="Search")
           .column
-            button#search-button.button Search
+            button#search-button.button(href= `${routes.product.search}`) Search
       .product-list
         each product in products
           +product-card(product)
