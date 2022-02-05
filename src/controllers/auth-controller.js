@@ -5,11 +5,12 @@ import auth from "../services/authorize.js"
 
 export default class {
   constructor(app) {
-    let routes = routeService.auth
+    const routes = routeService.auth
 
     app.get(routes.login, this.loginGet)
-    app.get(routes.signup, this.signupGet)
     app.post(routes.login, this.loginPost)
+    app.get(routes.signup, this.signupGet)
+    app.post(routes.signup, this.signupPost)
   }
 
   loginGet(req, res) {
@@ -17,30 +18,64 @@ export default class {
   }
 
   async loginPost(req, res) {
-    let username = req.body.username
-    let password = req.body.password
+    const username = req.body.username
+    const password = req.body.password
 
-    let user = (await prisma.user.findUnique({
-      where: {
-        username: username,
-      },
-      select: {
-        id: true,
-        passHash: true,
-      }
-    }))
-    if (!user)
-      res.render('auth/login')
+    const user = await prisma.user.findUnique({
+      where: { username: req.body.username },
+      select: { id: true, passHash: true }
+    })
+    if (!user) {
+      res.render('auth/login', { usernameError: true })
+      return
+    }
 
-    let success = await bcrypt.compare(password, user.passHash)
+    const success = await bcrypt.compare(password, user.passHash)
     if (success) {
       auth.saveUser(req, res, user.id)
+    } else {
+      res.render('auth/login', { passwordError: true })
+      return
     }
-    else
-      res.render('auth/login')
   }
 
   signupGet(req, res) {
     res.render('auth/signup')
+  }
+
+  async signupPost(req, res) {
+    if (!(req.body.username && req.body.password && req.body.name && req.body.surname && req.body.email)) {
+      res.render('auth/signup', { emptyRow: true })
+      return
+    }
+    const exists = await prisma.user.count({
+      where: {
+        OR:
+          [{ username: req.body.username },
+          { email: req.body.email }]
+      },
+      select: { id: true }
+    })
+    if (exists) {
+      res.render('auth/signup', { conflict: true })
+      return
+    }
+
+    const hash = await bcrypt.hash(req.body.password, 10)
+
+    user = await prisma.user.create({
+      data: {
+        username: req.body.username,
+        passHash: hash,
+        name: req.body.name,
+        surname: req.body.surname,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
+        dateOfBirth: req.body.dateOfBirth || undefined
+      }
+    })
+
+    if (user)
+      auth.saveUser(req, res, user.id)
   }
 }

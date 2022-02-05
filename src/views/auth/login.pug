@@ -6,13 +6,17 @@ block content
       div.header
         h1.title Log in
         h2.subtitle Fill required fields to continue
-      form(action="/login", method="post") 
+      form(action="/login" method="post") 
         div.field
           div.control
             input.input(type="text" placeholder="Username" name="username")
+            if locals.usernameError
+              p.help.is-danger Incorrect username.
         div.field
           div.control
             input.input(type="password" placeholder="Password" name="password")
+            if locals.passwordError
+              p.help.is-danger Incorrect password.
         div.field.is-grouped.is-grouped-centered
           div.control
             button.button.is-primary(type="submit") Log in

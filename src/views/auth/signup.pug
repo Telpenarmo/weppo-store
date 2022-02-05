@@ -6,34 +6,38 @@ block content
       div.header
         h1.title Sign up
         h2.subtitle Fill required fields to continue
-      form
+      form(action="/signup" method="post")
         div.field-group
           label.label General info
           div.field
             div.control
-              input.input(type="text" placeholder="Username")
+              input.input(type="text" placeholder="Username" name="username")
           div.columns
             div.column.is-half.field
               div.control
-                input.input(type="text" placeholder="Name")
+                input.input(type="text" placeholder="Name" name="name")
             div.column.is-half.field
               div.control
-                input.input(type="text" placeholder="Surname")
+                input.input(type="text" placeholder="Surname" name="surname")
           div.field
             div.control
-              input.input(type="text" placeholder="Email")
+              input.input(type="text" placeholder="Email" name="email")
           div.field
             div.control
-              input.input(type="text" placeholder="Phone number")
-          
+              input.input(type="text" placeholder="Phone number" name="phoneNumber")
+
         div.field
           label.label Password
           div.control
-            input.input(type="password" placeholder="Password")
+            input.input(type="password" placeholder="Password" name="password")
         div.field
           label.label Date of birth
           div.control
-            input.input(type="date" placeholder="Username")
+            input.input(type="date" placeholder="Date of birth" name="dateOfBirth")
         div.field.is-grouped.is-grouped-right
           div.control
-            button.button.is-primary Submit
+            button.button.is-primary(type="submit") Submit
+        if locals.emptyRow
+          p.help.is-danger All required fields should be filled.
+        if locals.conflict
+          p.help.is-danger User with provided username or email already exists.
