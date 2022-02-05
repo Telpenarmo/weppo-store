@@ -6,7 +6,7 @@ block content
       div.header
         h1.title Log in
         h2.subtitle Fill required fields to continue
-      form(action="/login" method="post") 
+      form(action=(href= `${routes.auth.login}`) method="post") 
         div.field
           div.control
             input.input(type="text" placeholder="Username" name="username")

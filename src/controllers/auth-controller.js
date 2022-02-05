@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt"
 import routeService from "../services/route-service.js";
 import prisma from "../services/prisma-service.js"
-import auth from "../services/authorize.js"
+import auth from "../services/auth-service.js"
 
 export default class {
   constructor(app) {
@@ -11,6 +11,7 @@ export default class {
     app.post(routes.login, this.loginPost)
     app.get(routes.signup, this.signupGet)
     app.post(routes.signup, this.signupPost)
+    app.get(routes.logout, auth.authorize(), this.logout)
   }
 
   loginGet(req, res) {
@@ -18,9 +19,6 @@ export default class {
   }
 
   async loginPost(req, res) {
-    const username = req.body.username
-    const password = req.body.password
-
     const user = await prisma.user.findUnique({
       where: { username: req.body.username },
       select: { id: true, passHash: true }
@@ -30,7 +28,7 @@ export default class {
       return
     }
 
-    const success = await bcrypt.compare(password, user.passHash)
+    const success = await bcrypt.compare(req.body.password, user.passHash)
     if (success) {
       auth.saveUser(req, res, user.id)
     } else {
@@ -77,5 +75,9 @@ export default class {
 
     if (user)
       auth.saveUser(req, res, user.id)
+  }
+
+  logout(req, res) {
+    auth.forgetUser(res, req.user.id)
   }
 }

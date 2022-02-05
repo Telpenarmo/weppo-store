@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser"
 import { dirname } from "path"
 import { fileURLToPath } from "url"
 import routeService from "./services/route-service.js"
+import authService from "./services/auth-service.js"
 /* Controllers */
 import AuthController from "./controllers/auth-controller.js"
 import HomeController from "./controllers/home-controller.js"
@@ -24,6 +25,11 @@ app.use(cookieParser(process.env.SECRET))
 app.locals.site = { title: 'WEPPO-STORE' }
 app.locals.routes = routeService
 app.locals.navbar = { tabs: [] }
+
+app.use(authService.authenticate, (req, res, next) => {
+  app.locals.user = req.user // dirty hack to let navbar know about auth status
+  next()
+})
 
 new AuthController(app)
 new HomeController(app)

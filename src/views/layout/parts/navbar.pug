@@ -18,9 +18,16 @@ nav.navbar.is-light.is-fixed-top
               each dtab in tab.tabs
                 a.navbar-item(href=`${dtab.href}`)= dtab.label
     div.navbar-end
+      if user
+        div.navbar-item
+          | Hello, #{user.username}
       div.navbar-item
         div.buttons
-          a.button.is-light(href= `${routes.auth.signup}`)
-            strong Sign up
-          a.button.is-light(href= `${routes.auth.login}`) 
-            | Log in
+          if !user
+            a.button.is-light(href= `${routes.auth.signup}`)
+              strong Sign up
+            a.button.is-light(href= `${routes.auth.login}`) 
+              | Log in
+          else
+            a.button.is-light(href= `${routes.auth.logout}`)
+              | Log out

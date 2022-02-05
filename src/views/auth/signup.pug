@@ -6,7 +6,7 @@ block content
       div.header
         h1.title Sign up
         h2.subtitle Fill required fields to continue
-      form(action="/signup" method="post")
+      form(action=(href= `${routes.auth.signup}`) method="post")
         div.field-group
           label.label General info
           div.field

@@ -20,7 +20,8 @@ export default {
   },
   auth: {
     login: '/login',
-    signup: '/signup'
+    signup: '/signup',
+    logout: '/logout'
   },
   substituteParameters
 }
