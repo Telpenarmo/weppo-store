@@ -38,6 +38,7 @@ async function main() {
     data: [{
       id: 0,
       username: 'MusicFreak456',
+      passHash: '$2b$10$w7IuC2n2wGyr2AodXx6dTuwv/3kP6Y/pBkf91Hd4HmYl1gtPsUIRy', // "password"
       name: 'Cezary',
       surname: 'Świtała',
       email: 'test@test.com',
@@ -46,9 +47,10 @@ async function main() {
     }, {
       id: 1,
       username: 'Telpenarmo',
+      passHash: '$2b$10$w7IuC2n2wGyr2AodXx6dTuwv/3kP6Y/pBkf91Hd4HmYl1gtPsUIRy', // "password"
       name: 'Jakub',
       surname: 'Grabarczuk',
-      email: 'test@test.com',
+      email: 'test2@test.com',
       phoneNumber: '123 456 789',
       dateOfBirth: new Date(1970, 1, 1)
     }
