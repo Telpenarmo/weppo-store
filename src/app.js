@@ -1,5 +1,7 @@
 /* Utils */
 import express from "express"
+import bodyParser from "body-parser"
+import cookieParser from "cookie-parser"
 import { dirname } from "path"
 import { fileURLToPath } from "url"
 import routeService from "./services/route-service.js"
@@ -16,6 +18,8 @@ const workdir = dirname(fileURLToPath(import.meta.url))
 app.set('view engine', 'pug')
 app.set('views', workdir + '/views')
 app.use('/assets', express.static(workdir + '/public'))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser(process.env.SECRET))
 
 app.locals.site = { title: 'WEPPO-STORE' }
 app.locals.routes = routeService
