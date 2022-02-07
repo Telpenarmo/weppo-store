@@ -43,7 +43,8 @@ async function main() {
       surname: 'Świtała',
       email: 'test@test.com',
       phoneNumber: '123 456 789',
-      dateOfBirth: new Date(1970, 1, 1)
+      dateOfBirth: new Date(1970, 1, 1),
+      isAdmin: true,
     }, {
       id: 1,
       username: 'Telpenarmo',
@@ -52,7 +53,8 @@ async function main() {
       surname: 'Grabarczuk',
       email: 'test2@test.com',
       phoneNumber: '123 456 789',
-      dateOfBirth: new Date(1970, 1, 1)
+      dateOfBirth: new Date(1970, 1, 1),
+      isAdmin: true,
     }
     ]
   })

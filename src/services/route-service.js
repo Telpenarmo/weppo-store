@@ -1,6 +1,6 @@
 function substituteParameters(route, ...params) {
   let paramGenerator = function* () {
-    for(let param of params)
+    for (let param of params)
       yield param
   }()
 
@@ -13,7 +13,7 @@ export default {
   },
   user: {
     index: '/users',
-    show: '/user/:userId'
+    show: '/user/:id'
   },
   product: {
     index: '/products',
