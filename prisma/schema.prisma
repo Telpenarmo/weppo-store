@@ -24,11 +24,12 @@ model User {
 }
 
 model Product {
-  id        Int         @id @default(autoincrement())
-  name      String
-  summary   String
-  price     Float
-  OrderItem OrderItem[]
+  id          Int         @id @default(autoincrement())
+  name        String
+  summary     String
+  description String
+  price       Float
+  OrderItem   OrderItem[]
 }
 
 model Order {
