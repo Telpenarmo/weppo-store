@@ -17,7 +17,8 @@ export default {
   },
   product: {
     index: '/products',
-    search: '/products/search'
+    search: '/products/search',
+    show: '/product/:id'
   },
   auth: {
     login: '/login',

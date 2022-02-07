@@ -7,6 +7,7 @@ export default class {
 
     app.get(routes.index, this.index)
     app.get(routes.search, this.search)
+    app.get(routes.show, this.show)
 
     app.locals.navbar.tabs.push({
       label: 'Products',
@@ -45,5 +46,20 @@ export default class {
         currentPage: 1
       }
     })
+  }
+
+  async show(req, res) {
+    const productId = req.params.id
+    
+    const product = await prisma.product.findUnique({
+      where: {
+        id : parseInt(productId)
+      }
+    })
+
+    if (product)
+      res.render('product/show', {product})
+    else
+      res.render('common/404')
   }
 }

@@ -1,0 +1,17 @@
+extends ../layout/layout.pug
+
+block content
+  section.product-show
+    .container.is-max-desktop.has-background-light.p-5
+      h1.title= product.name
+      .field
+        h2.is-size-4.has-text-weight-bold Summary
+        span.is-size-5= product.summary
+      .field
+        h2.is-size-4.has-text-weight-bold Price
+        span.is-size-5= `${product.price}$`
+      .field
+        h2.is-size-4.has-text-weight-bold Detailed description
+        span.is-size-5= product.description
+      .buttons.mt-6.is-right
+        button.button.is-info Add to cart
