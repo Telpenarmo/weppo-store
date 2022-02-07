@@ -36,6 +36,8 @@ new HomeController(app)
 new UserController(app)
 new ProductController(app)
 
+app.get('*', (req, res) => res.render('common/404'))
+
 app.listen(port, () => {
   console.log(`App started on port ${port}`)
 })
