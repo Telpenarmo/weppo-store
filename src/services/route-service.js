@@ -18,7 +18,10 @@ export default {
   product: {
     index: '/products',
     search: '/products/search',
-    show: '/product/:id'
+    show: '/product/:id',
+    add: '/product/add',
+    edit: '/product/edit/:id',
+    delete: '/product/delete/:id'
   },
   auth: {
     login: '/login',

@@ -38,7 +38,7 @@ export default class {
         ]
       }
     })
-    
+
     res.render('product/index', {
       products: products,
       pagination: {
@@ -50,15 +50,13 @@ export default class {
 
   async show(req, res) {
     const productId = req.params.id
-    
+
     const product = await prisma.product.findUnique({
-      where: {
-        id : parseInt(productId)
-      }
+      where: { id: parseInt(productId) }
     })
 
-    if (product)
-      res.render('product/show', {product})
+    if (product && !product.deleted)
+      res.render('product/show', { product })
     else
       res.render('common/404')
   }
