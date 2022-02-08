@@ -4,6 +4,7 @@ import prisma from "../services/prisma-service.js"
 import helpers from "../services/helper-service.js"
 
 const itemsOnPage = 10
+const db = prisma.product
 
 export default class {
   constructor(app) {
@@ -26,7 +27,7 @@ export default class {
 
   async index(req, res) {
     const { results, pagination } =
-      await helpers.paginationHelper(req, prisma.product, itemsOnPage)
+      await helpers.paginationHelper(req, db, itemsOnPage)
     res.render('product/index', {
       products: results,
       pagination
@@ -38,31 +39,49 @@ export default class {
   }
 
   async createPost(req, res) {
-    console.log(req.body)
+    let product = req.body
+    if (!validate(req.body)) {
+      res.render('product/edit', { product, emptyRow: true })
+      return
+    }
+    product.price = parseFloat(product.price)
+    
+    product = await db.create({
+      data: product,
+      select: { id: true }
+    })
+
+    console.log(`Product ${product.id} created.`)
     res.render('product/create')
   }
 
   async editGet(req, res) {
-    res.render('product/edit', { product: {
-      id: 0,
-      name: 'Resistor 330k',
-      summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      Praesent dictum velit a neque vulputate.`,
-      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      Praesent varius dignissim lacus, quis venenatis ex bibendum eu. Sed 
-      interdum ullamcorper turpis, vel imperdiet ante dictum nec. Sed fringilla 
-      nunc lacus, id consectetur ligula rhoncus a. Nam non diam nisl. Donec 
-      pretium felis ante, id congue mi pulvinar a. Praesent eros enim, tempus 
-      eu cursus vitae, pellentesque eget dolor. Sed vel lorem consequat, 
-      pharetra massa non, sollicitudin est. Vivamus ullamcorper ligula eu auctor 
-      scelerisque. Fusce viverra tincidunt dolor, in luctus arcu ultrices in. 
-      Aliquam et tempus est.`,
-      price: 0.25
-    } } )
+    const product = await db.findUnique({
+      where: { id: parseInt(req.params.id) }
+    })
+
+    if (product && !product.deleted)
+      res.render('product/edit', { product })
+    else
+      res.render('common/404')
   }
 
   async editPost(req, res) {
-    console.log(req.body)
+    const product = req.body
+
+    if (!validate(req.body)) {
+      res.render('product/edit', { product, emptyRow: true })
+      return
+    }
+    product.id = parseInt(product.id)
+    product.price = parseFloat(product.price)
+
+    await db.update({
+      where: { id: product.id },
+      data: product
+    })
+
+    console.log(`Product ${product.id} updated.`)
     res.render('product/create')
   }
 
@@ -77,7 +96,7 @@ export default class {
       ]
     }
     const { results, pagination } =
-      await helpers.paginationHelper(req, prisma.product, itemsOnPage, constraint)
+      await helpers.paginationHelper(req, db, itemsOnPage, constraint)
 
     res.render('product/index', {
       products: results,
@@ -88,7 +107,7 @@ export default class {
   async show(req, res) {
     const productId = req.params.id
 
-    const product = await prisma.product.findUnique({
+    const product = await db.findUnique({
       where: { id: parseInt(productId) }
     })
 
@@ -97,4 +116,8 @@ export default class {
     else
       res.render('common/404')
   }
+}
+
+function validate(p) {
+  return p.name && p.summary && p.description && p.price
 }

@@ -2,10 +2,8 @@ import prisma from "../src/services/prisma-service.js"
 
 async function main() {
 
-  await prisma.product.createMany({
-    skipDuplicates: true,
-    data: [{
-      id: 0,
+  const prod1 = await prisma.product.create({
+    data: {
       name: 'Resistor 330k',
       summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
       Praesent dictum velit a neque vulputate.`,
@@ -19,8 +17,10 @@ async function main() {
       scelerisque. Fusce viverra tincidunt dolor, in luctus arcu ultrices in. 
       Aliquam et tempus est.`,
       price: 0.25
-    }, {
-      id: 1,
+    }
+  })
+  const prod2 = await prisma.product.create({
+    data: {
       name: 'LED Bargraph',
       summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
       Praesent dictum velit a neque vulputate.`,
@@ -34,8 +34,10 @@ async function main() {
       scelerisque. Fusce viverra tincidunt dolor, in luctus arcu ultrices in. 
       Aliquam et tempus est.`,
       price: 5.42
-    }, {
-      id: 2,
+    }
+  })
+  const prod3 = await prisma.product.create({
+    data: {
       name: 'Op-amp',
       summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
       Praesent dictum velit a neque vulputate. consectetur adipiscing elit. 
@@ -50,8 +52,10 @@ async function main() {
       scelerisque. Fusce viverra tincidunt dolor, in luctus arcu ultrices in. 
       Aliquam et tempus est.`,
       price: 10.0
-    }, {
-      id: 3,
+    }
+  })
+  const prod4 = await prisma.product.create({
+    data: {
       name: 'LCD Display',
       summary: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
       Praesent dictum velit a neque vulputate.`,
@@ -65,12 +69,10 @@ async function main() {
       scelerisque. Fusce viverra tincidunt dolor, in luctus arcu ultrices in. 
       Aliquam et tempus est.`,
       price: 15.0
-    }]
+    }
   })
-  await prisma.user.createMany({
-    skipDuplicates: true,
-    data: [{
-      id: 0,
+  const user1 = await prisma.user.create({
+    data: {
       username: 'MusicFreak456',
       passHash: '$2b$10$w7IuC2n2wGyr2AodXx6dTuwv/3kP6Y/pBkf91Hd4HmYl1gtPsUIRy', // "password"
       name: 'Cezary',
@@ -79,8 +81,10 @@ async function main() {
       phoneNumber: '123 456 789',
       dateOfBirth: new Date(1970, 1, 1),
       isAdmin: true,
-    }, {
-      id: 1,
+    }
+  })
+  const user2 = await prisma.user.create({
+    data: {
       username: 'Telpenarmo',
       passHash: '$2b$10$w7IuC2n2wGyr2AodXx6dTuwv/3kP6Y/pBkf91Hd4HmYl1gtPsUIRy', // "password"
       name: 'Jakub',
@@ -90,16 +94,14 @@ async function main() {
       dateOfBirth: new Date(1970, 1, 1),
       isAdmin: true,
     }
-    ]
   })
   await prisma.order.create({
     data: {
-      id: 0,
-      userId: 0,
+      userId: user1.id,
       placingTime: new Date(1970, 1, 1),
       orderItems: {
         create: [{
-          productId: 0,
+          productId: prod1.id,
           quantity: 2
         }]
       }
@@ -107,12 +109,11 @@ async function main() {
   })
   await prisma.order.create({
     data: {
-      id: 1,
-      userId: 1,
+      userId: user2.id,
       placingTime: new Date(1970, 1, 1),
       orderItems: {
         create: [{
-          productId: 0,
+          productId: prod1.id,
           quantity: 1
         }]
       }

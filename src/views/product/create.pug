@@ -26,4 +26,6 @@ block content
         .field.is-grouped.is-grouped-right
           .control
             button.button.is-primary(type="submit") Create
+        if locals.emptyRow
+          p.help.is-danger All required fields should be filled.
           
