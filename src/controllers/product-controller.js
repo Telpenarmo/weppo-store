@@ -1,6 +1,8 @@
 import routeService from "../services/route-service.js";
 import prisma from "../services/prisma-service.js"
 
+const itemsOnPage = 10
+
 export default class {
   constructor(app) {
     let routes = routeService.product
@@ -17,18 +19,27 @@ export default class {
   }
 
   async index(req, res) {
+    const page = req.query.page || 1
+    const count = await prisma.product.count()
+    const products = await prisma.product.findMany({
+      skip: itemsOnPage * (page - 1),
+      take: itemsOnPage,
+    })
     res.render('product/index', {
-      products: await prisma.product.findMany(),
+      products,
       pagination: {
-        numberOfPages: 3,
-        currentPage: 1
+        numberOfPages: Math.ceil(count / itemsOnPage),
+        currentPage: page
       }
     })
   }
 
   async search(req, res) {
+    const page = req.query.page || 1
+    const count = await prisma.product.count()
+
     const conObj = {
-      contains: req.query.q,
+      contains: req.params.query,
     }
     const products = await prisma.product.findMany({
       where: {
@@ -36,14 +47,16 @@ export default class {
           { name: conObj },
           { summary: conObj }
         ]
-      }
+      },
+      skip: itemsOnPage * (page - 1),
+      take: itemsOnPage,
     })
 
     res.render('product/index', {
       products: products,
       pagination: {
-        numberOfPages: 1,
-        currentPage: 1
+        numberOfPages: Math.ceil(count / itemsOnPage),
+        currentPage: page
       }
     })
   }
