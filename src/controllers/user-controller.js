@@ -14,7 +14,9 @@ export default class {
 
   async show(req, res) {
     const user = await prisma.user.findUnique({
-      where: { id: req.params.id }
+      where: { 
+        id: parseInt(req.params.id)
+      }
     })
     
     if (!user)
@@ -33,8 +35,8 @@ export default class {
     res.render('user/index', {
       users,
       pagination: {
-        numberOfPages: 3,
-        currentPage: Math.ceil(count / itemsOnPage)
+        numberOfPages: Math.ceil(count / itemsOnPage),
+        currentPage: page
       }
     })
   }

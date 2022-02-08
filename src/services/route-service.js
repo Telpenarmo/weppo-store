@@ -19,9 +19,9 @@ export default {
     index: '/products',
     search: '/products/search/:query',
     show: '/product/:id',
-    add: '/product/add',
-    edit: '/product/edit/:id',
-    delete: '/product/delete/:id'
+    create: '/product/create',
+    edit: '/product/:id/edit',
+    delete: '/product/:id/delete'
   },
   cart: {
     show: '/cart'
