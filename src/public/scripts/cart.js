@@ -44,7 +44,7 @@ function updateOrCreateEntry (productId, modifier) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const addToCartButtons = document.querySelectorAll('.cart-button')
+  const addToCartButtons = document.querySelectorAll('.add-to-cart')
 
   addToCartButtons.forEach( button => {
     button.addEventListener('click', () => {
