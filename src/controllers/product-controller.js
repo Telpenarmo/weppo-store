@@ -1,4 +1,5 @@
 import routeService from "../services/route-service.js";
+import auth from "../services/auth-service.js";
 import prisma from "../services/prisma-service.js"
 
 const itemsOnPage = 10
@@ -9,6 +10,8 @@ export default class {
 
     app.get(routes.index, this.index)
     app.get(routes.search, this.search)
+    app.get(routes.create, auth.authorize("admin"), this.createGet)
+    app.post(routes.create, auth.authorize("admin"), this.createPost)
     app.get(routes.show, this.show)
 
     app.locals.navbar.tabs.push({
@@ -32,6 +35,15 @@ export default class {
         currentPage: page
       }
     })
+  }
+
+  async createGet(req, res) {
+    res.render('product/create')
+  }
+
+  async createPost(req, res) {
+    console.log(req.body)
+    res.render('product/create')
   }
 
   async search(req, res) {

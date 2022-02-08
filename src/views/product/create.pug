@@ -1,0 +1,29 @@
+extends ../layout/layout.pug
+
+block content
+  section.product-creeate
+    .container.form-card.mt-6.mb-6
+      .header
+        h1.title Create new product
+        h2.subtitle Fill some basic information about the product
+      form(action=(href= `${routes.product.create}`) method="post")
+        .field-group
+          label.label Description
+          .field
+            .control
+              input.input(type="text" placeholder="Product name" name="name")
+          .field
+            .control
+              textarea.textarea(placeholder="Product summary" name="summary")
+          .field
+            .control
+              textarea.textarea(placeholder="Product description" name="description")
+        .field-group
+          label.label Price
+          .field
+            .control
+              input.input(type="number" step="0.01", name="price" placeholder="0,00")
+        .field.is-grouped.is-grouped-right
+          .control
+            button.button.is-primary(type="submit") Create
+          
