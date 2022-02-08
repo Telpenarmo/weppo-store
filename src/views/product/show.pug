@@ -15,7 +15,7 @@ block content
         span.is-size-5= product.description
       .buttons.mt-6.is-right
         if user && user.isAdmin
-          a.button.is-warning.cart-button(href
+          a.button.is-warning(href
             =`${routes.substituteParameters(routes.product.edit, product.id)}`
           ) Edit
         button.button.is-info.cart-button(data-id=`${product.id}`) Add to cart
