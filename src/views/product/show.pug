@@ -18,4 +18,11 @@ block content
           a.button.is-warning(href
             =`${routes.substituteParameters(routes.product.edit, product.id)}`
           ) Edit
-        button.button.is-info.cart-button(data-id=`${product.id}`) Add to cart
+        if user
+          button.button.is-info.cart-button.add-to-cart(data-id
+            =`${product.id}`
+          ) Add to cart
+        else
+          a.button.is-info.cart-button(href
+            =`${routes.auth.login}`
+          ) Add to cart
