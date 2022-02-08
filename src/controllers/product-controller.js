@@ -1,6 +1,7 @@
 import routeService from "../services/route-service.js";
 import auth from "../services/auth-service.js";
 import prisma from "../services/prisma-service.js"
+import helpers from "../services/helper-service.js"
 
 const itemsOnPage = 10
 
@@ -24,18 +25,11 @@ export default class {
   }
 
   async index(req, res) {
-    const page = req.query.page || 1
-    const count = await prisma.product.count()
-    const products = await prisma.product.findMany({
-      skip: itemsOnPage * (page - 1),
-      take: itemsOnPage,
-    })
+    const { results, pagination } =
+      await helpers.paginationHelper(req, prisma.product, itemsOnPage)
     res.render('product/index', {
-      products,
-      pagination: {
-        numberOfPages: Math.ceil(count / itemsOnPage),
-        currentPage: page
-      }
+      products: results,
+      pagination
     })
   }
 
@@ -73,29 +67,21 @@ export default class {
   }
 
   async search(req, res) {
-    const page = req.query.page || 1
-    const count = await prisma.product.count()
-
     const conObj = {
-      contains: req.params.query,
+      contains: req.query.q,
     }
-    const products = await prisma.product.findMany({
-      where: {
-        OR: [
-          { name: conObj },
-          { summary: conObj }
-        ]
-      },
-      skip: itemsOnPage * (page - 1),
-      take: itemsOnPage,
-    })
+    const constraint = {
+      OR: [
+        { name: conObj },
+        { summary: conObj }
+      ]
+    }
+    const { results, pagination } =
+      await helpers.paginationHelper(req, prisma.product, itemsOnPage, constraint)
 
     res.render('product/index', {
-      products: products,
-      pagination: {
-        numberOfPages: Math.ceil(count / itemsOnPage),
-        currentPage: page
-      }
+      products: results,
+      pagination
     })
   }
 

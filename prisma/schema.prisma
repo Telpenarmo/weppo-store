@@ -20,7 +20,7 @@ model User {
   phoneNumber String?
   dateOfBirth DateTime?
   isAdmin     Boolean   @default(false)
-  Order       Order[]
+  orders      Order[]
 }
 
 model Product {
@@ -29,7 +29,7 @@ model Product {
   summary     String
   description String
   price       Float
-  OrderItem   OrderItem[]
+  orderItems  OrderItem[]
   deleted     Boolean     @default(false)
 }
 
@@ -38,7 +38,7 @@ model Order {
   user        User        @relation(fields: [userId], references: [id])
   userId      Int         @unique
   placingTime DateTime    @default(now())
-  OrderItem   OrderItem[]
+  orderItems  OrderItem[]
 }
 
 model OrderItem {
