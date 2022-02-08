@@ -17,7 +17,7 @@ export default {
   },
   product: {
     index: '/products',
-    search: '/products/search/:query',
+    search: '/products/search/',
     show: '/product/:id',
     create: '/product/create',
     edit: '/product/:id/edit',

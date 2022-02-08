@@ -1,8 +1,6 @@
 import prisma from "../src/services/prisma-service.js"
 
 async function main() {
-  await prisma.product.deleteMany()
-  await prisma.user.deleteMany()
 
   await prisma.product.createMany({
     skipDuplicates: true,
@@ -93,6 +91,32 @@ async function main() {
       isAdmin: true,
     }
     ]
+  })
+  await prisma.order.create({
+    data: {
+      id: 0,
+      userId: 0,
+      placingTime: new Date(1970, 1, 1),
+      orderItems: {
+        create: [{
+          productId: 0,
+          quantity: 2
+        }]
+      }
+    }
+  })
+  await prisma.order.create({
+    data: {
+      id: 1,
+      userId: 1,
+      placingTime: new Date(1970, 1, 1),
+      orderItems: {
+        create: [{
+          productId: 0,
+          quantity: 1
+        }]
+      }
+    }
   })
 }
 
