@@ -1,0 +1,27 @@
+extends ../layout/layout.pug
+include ../common/pagination.pug
+
+block content
+  section.order-index
+    #table-wrapper.container.is-max-desktop
+      h1.title.mb-5 Order list
+      .table-container
+        table.is-fullwidth.table.is-striped
+          thead
+            tr
+              th User
+              th Placed
+              th Action
+          tbody
+            each order in orders
+              tr
+                th
+                  a(href
+                  =`${routes.substituteParameters(routes.user.show, order.user.id)}`)
+                    = order.user.username
+                th= order.placingTime.toLocaleDateString()
+                th
+                  a.button.is-small(href
+                    = `${routes.substituteParameters(routes.order.show, order.id)}`
+                  ) View
+      +pagination(pagination)

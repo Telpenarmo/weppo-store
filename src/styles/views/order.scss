@@ -1,0 +1,11 @@
+section.order-index {
+  #table-wrapper {
+    @include wrapper-padding;
+  }
+}
+
+section.order-show {
+  #table-wrapper {
+    @include wrapper-padding;
+  }
+}

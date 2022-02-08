@@ -23,6 +23,10 @@ export default {
     edit: '/product/:id/edit',
     delete: '/product/:id/delete'
   },
+  order: {
+    index: '/orders',
+    show: '/order/:id'
+  },
   cart: {
     show: '/cart'
   },

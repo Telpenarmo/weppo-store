@@ -1,0 +1,26 @@
+extends ../layout/layout.pug
+
+block content
+  section.order-show
+    #table-wrapper.container.is-max-desktop.has-background-light
+      h1.title.mb-5= `Order nr.${order.id}`
+      h3.has-text-weight-bold.is-size-4= `From: ${order.user.username}`
+      h3.has-text-weight-bold.is-size-4.mt-2
+        = `Placed on: ${order.placingTime.toLocaleDateString()}`
+      h3.has-text-weight-bold.is-size-4.mt-5.mb-5 List of products
+      .table-container
+        table.is-fullwidth.table
+          thead
+            tr
+              th Name
+              th Price
+              th Quantity
+          tbody
+            each orderedItem in order.orderItems
+              tr
+                th
+                  a(href
+                  =`${routes.substituteParameters(routes.product.show, orderedItem.product.id)}`)
+                    = orderedItem.product.name
+                th= orderedItem.product.price
+                th= orderedItem.quantity

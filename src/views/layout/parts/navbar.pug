@@ -17,6 +17,12 @@ nav.navbar.is-light.is-fixed-top
             div.navbar-dropdown
               each dtab in tab.tabs
                 a.navbar-item(href=`${dtab.href}`)= dtab.label
+      if user && user.isAdmin
+        div.navbar-item.has-dropdown.is-hoverable
+          a.navbar-link Admin
+          div.navbar-dropdown
+            a.navbar-item(href=`${routes.user.index}`) Users
+            a.navbar-item(href=`${routes.order.index}`) Orders
     div.navbar-end
       if user
         div.navbar-item

@@ -12,6 +12,7 @@ import HomeController from "./controllers/home-controller.js"
 import UserController from "./controllers/user-controller.js"
 import ProductController from "./controllers/product-controller.js"
 import CartController from "./controllers/cart-controller.js"
+import OrderController from "./controllers/order-controller.js"
 
 const port = process.env.PORT
 const app = express()
@@ -37,6 +38,7 @@ new HomeController(app)
 new UserController(app)
 new ProductController(app)
 new CartController(app)
+new OrderController(app)
 
 app.get('*', (req, res) => res.render('common/404'))
 
