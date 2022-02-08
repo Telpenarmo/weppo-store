@@ -17,8 +17,11 @@ export default {
   },
   product: {
     index: '/products',
-    search: '/products/search',
-    show: '/product/:id'
+    search: '/products/search/:query',
+    show: '/product/:id',
+    add: '/product/add',
+    edit: '/product/edit/:id',
+    delete: '/product/delete/:id'
   },
   cart: {
     show: '/cart'

@@ -2,6 +2,8 @@ import routeService from "../services/route-service.js";
 import auth from "../services/auth-service.js";
 import prisma from "../services/prisma-service.js"
 
+const itemsOnPage = 20
+
 export default class {
   constructor(app) {
     let routes = routeService.user
@@ -22,11 +24,17 @@ export default class {
   }
 
   async index(req, res) {
+    const page = req.query.page || 1
+    const count = await prisma.user.count()
+    const users = await prisma.user.findMany({
+      skip: itemsOnPage * (page - 1),
+      take: itemsOnPage,
+    })
     res.render('user/index', {
-      users: await prisma.user.findMany(),
+      users,
       pagination: {
         numberOfPages: 3,
-        currentPage: 1
+        currentPage: Math.ceil(count / itemsOnPage)
       }
     })
   }
