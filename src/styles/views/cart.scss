@@ -1,0 +1,7 @@
+@import "../utils/wrapper-padding";
+
+section.show-cart {
+  #table-wrapper {
+    @include wrapper-padding;
+  }
+}

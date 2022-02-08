@@ -1,6 +1,7 @@
 doctype html
 head
-  include parts/head.pug
+  block head
+    include parts/head.pug
 body.has-navbar-fixed-top
   include parts/navbar.pug
   #content-wrapper

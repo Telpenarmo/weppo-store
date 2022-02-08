@@ -6,6 +6,7 @@
 @import "../../node_modules/bulma/sass/helpers/_all";
 @import "../../node_modules/bulma/sass/components/navbar";
 @import "../../node_modules/bulma/sass/components/pagination";
+@import "../../node_modules/bulma/sass/components/message";
 @import "../../node_modules/bulma/sass/layout/footer";
 @import "../../node_modules/bulma/sass/elements/button";
 @import "../../node_modules/bulma/sass/elements/container";
@@ -25,6 +26,7 @@
 @import "views/user";
 @import "views/home";
 @import "views/product";
+@import "views/cart";
 
 #content-wrapper {
   display: flex;

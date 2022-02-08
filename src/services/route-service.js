@@ -20,6 +20,9 @@ export default {
     search: '/products/search',
     show: '/product/:id'
   },
+  cart: {
+    show: '/cart'
+  },
   auth: {
     login: '/login',
     signup: '/signup',

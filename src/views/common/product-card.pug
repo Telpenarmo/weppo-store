@@ -12,4 +12,4 @@ mixin product-card(product)
         a.read-more(href
           = `${routes.substituteParameters(routes.product.show, product.id)}`
         )  read more
-    a.button.cart-button Add to cart
+    button.button.cart-button(data-id=`${product.id}`) Add to cart
